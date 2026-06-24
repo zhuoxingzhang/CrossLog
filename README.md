@@ -37,7 +37,7 @@ CrossLog is evaluated on three real-world log datasets: **Novel**, **Forum**, an
 | Halo    | 0.1k | 0.81 | 0.80 | 0.83 | 0.87 |
 | Halo    | 1k   | 0.94 | 0.93 | 0.96 | 0.97 |
 
-CrossLog consistently outperforms all baselines, improving F1 by **8–21 percentage points** and PR-AUC by **5–13 percentage points** over the second-best method.
+CrossLog consistently outperforms all baselines.
 
 ---
 
@@ -136,7 +136,7 @@ This iterates over all three leave-one-out cross-system scenarios and five fine-
 python train.py \
   --source_dataset novel,halo \
   --target_dataset forum \
-  --dataset_id 51
+  --dataset_id <id>
 ```
 
 The best checkpoint is saved to `./models/towards_target_{target}_{dataset_id}_pretrain_checkpoint.pth`.
@@ -147,16 +147,9 @@ The best checkpoint is saved to `./models/towards_target_{target}_{dataset_id}_p
 python finetune_and_anomaly_infer.py \
   --source_dataset novel,halo \
   --target_dataset forum \
-  --dataset_id 51 \
-  --num_finetuning 500 \
-  --ratio_finetuning 0.2
+  --dataset_id <id> \
+  --num_finetuning 100 
 ```
-
-Results (F1, Recall, Precision, PR-AUC, ROC-AUC, and inference time) are written to `./log/test_results_{dataset_id}.txt`.
-
-### Zero-shot Evaluation
-
-Set `--num_finetuning 0` to skip fine-tuning and evaluate the pre-trained model directly on the target system.
 
 ---
 
@@ -187,8 +180,3 @@ $$\mathcal{L} = \lambda_1 \mathcal{L}_{sys} + \lambda_2 \mathcal{L}_{ano} + (1 -
 
 where $\mathcal{L}_{sys}$ is the system classification loss, $\mathcal{L}_{ano}$ is the anomaly detection loss, and $I(Z_{spe}; Z_{agn})$ is a mutual information term that encourages disentanglement between the two representations.
 
----
-
-## License
-
-This work is licensed under the [Creative Commons BY-NC-ND 4.0 International License](https://creativecommons.org/licenses/by-nc-nd/4.0/).
