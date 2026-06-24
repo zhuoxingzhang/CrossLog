@@ -174,5 +174,4 @@ During fine-tuning, the system-agnostic branch and system classifier are **froze
 
 $$\mathcal{L} = \lambda_1 \mathcal{L}_{sys} + \lambda_2 \mathcal{L}_{ano} + (1 - \lambda_1 - \lambda_2)\, I(Z_{spe}; Z_{agn})$$
 
-where $$\mathcal{L}_{sys}$$ is the system classification loss, $$\mathcal{L}_{ano}$$ is the anomaly detection loss, and $$I(Z_{spe}; Z_{agn})$$ is a mutual information term that encourages disentanglement between the two representations.
-
+where $\mathcal{L}_{sys}$ is the system classification loss, $\mathcal{L}_{ano}$ is the anomaly detection loss, and $I(Z_{spe}; Z_{agn})$ is a mutual information term that encourages disentanglement between the two representations.
