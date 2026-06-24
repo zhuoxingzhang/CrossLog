@@ -124,7 +124,7 @@ cd "CrossLog Code"
 python main.py
 ```
 
-This iterates over all three leave-one-out cross-system scenarios and five fine-tuning sizes (0.5k, 1k, 2k, 3k, 4k graphs).
+This iterates over all three leave-one-out cross-system scenarios and three fine-tuning sizes (0.1k, 0.5k, 1k graphs).
 
 ### Step 1: Pre-training on Source Systems
 
