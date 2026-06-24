@@ -1,4 +1,4 @@
-# CrossLog: Cross-system Anomaly Detection from System Logs
+# Cross-system Anomaly Detection from System Logs
 
 [![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC%20BY--NC--ND%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/)
 
@@ -41,7 +41,7 @@ CrossLog consistently outperforms all baselines.
 
 ---
 
-## Repository Structure
+## Structure
 
 ```
 CrossLog/
@@ -58,10 +58,6 @@ CrossLog/
 │   ├── utils.py                       # Metrics, threshold search, model I/O
 │   └── main.py                        # Full pipeline entry point
 ├── data/                              # Pre-processed embeddings and event abstraction maps
-│   ├── final_towards_target_{dataset}_event_abstraction_c{coupling}.json
-│   ├── unified_level_event_abstraction_embedding_c{coupling}.json
-│   ├── unified_exception_embedding.json
-│   └── unified_filename_embedding.json
 ├── {dataset}_dataset/                 # Raw graph files for forum / halo / novel
 ├── {dataset}_data/                    # Split index files per dataset ID
 ├── models/                            # Saved model checkpoints
@@ -94,7 +90,7 @@ pip install networkx scikit-learn tqdm
 
 ### Datasets
 
-CrossLog uses three open-source system log datasets: **Forum**, **Halo**, and **Novel**. Each raw log file is pre-processed into a graph file containing trace-level invocation information. Place the graph files under `{dataset}_dataset/`.
+CrossLog uses three open-source system log datasets: **Forum**, **Halo**, and **Novel**.
 
 ### Preprocessing
 
@@ -178,5 +174,5 @@ During fine-tuning, the system-agnostic branch and system classifier are **froze
 
 $$\mathcal{L} = \lambda_1 \mathcal{L}_{sys} + \lambda_2 \mathcal{L}_{ano} + (1 - \lambda_1 - \lambda_2)\, I(Z_{spe}; Z_{agn})$$
 
-where $\mathcal{L}_{sys}$ is the system classification loss, $\mathcal{L}_{ano}$ is the anomaly detection loss, and $I(Z_{spe}; Z_{agn})$ is a mutual information term that encourages disentanglement between the two representations.
+where $$\mathcal{L}_{sys}$$ is the system classification loss, $$\mathcal{L}_{ano}$$ is the anomaly detection loss, and $$I(Z_{spe}; Z_{agn})$$ is a mutual information term that encourages disentanglement between the two representations.
 
